@@ -54,6 +54,19 @@ test("survey has the required spec elements", () => {
         "no <button id=\"submit\" type=\"submit\">");
 });
 
+test("radio and checkbox groups are wrapped in <fieldset>/<legend>", () => {
+    // Screen readers announce fieldset+legend as a named group; bare <p>
+    // questions leave every option as an isolated, unlabelled input.
+    const fieldsets = html.match(/<fieldset\b/gi) ?? [];
+    const legends = html.match(/<legend\b/gi) ?? [];
+    assert.ok(fieldsets.length >= 2, `expected >=2 fieldsets (recommend + improve), found ${fieldsets.length}`);
+    assert.ok(legends.length >= 2, `expected >=2 legends, found ${legends.length}`);
+    // Each fieldset must actually contain a legend
+    for (const m of html.matchAll(/<fieldset\b[^>]*>[\s\S]*?<\/fieldset>/gi)) {
+        assert.match(m[0], /<legend\b/i, "a <fieldset> has no <legend> inside it");
+    }
+});
+
 test("every label[for] and every id is unique and resolvable", () => {
     const ids = [...html.matchAll(/\bid=["']([^"']+)["']/gi)].map((m) => m[1]);
     const dupes = ids.filter((id, i) => ids.indexOf(id) !== i);
