@@ -81,3 +81,20 @@ test("local href/src references point at existing files", () => {
         assert.ok(existsSync(path.join(root, ref)), `local reference "${ref}" does not exist`);
     }
 });
+
+test("#name and #email have autocomplete so browser autofill works (#5)", () => {
+    const field = (id) => html.match(new RegExp(`<input\\b[^>]*\\bid=["']${id}["'][^>]*>`, "i"))?.[0] ?? "";
+    const name = field("name");
+    const email = field("email");
+    assert.ok(name.includes('autocomplete="name"'), "#name has no autocomplete=\"name\"");
+    assert.ok(email.includes('autocomplete="email"'), "#email has no autocomplete=\"email\"");
+});
+
+test("the demo form says it has no action and collects no data (#5)", () => {
+    const form = html.match(/<form\b[^>]*>/i)?.[0] ?? "";
+    assert.ok(!/\baction\s*=/i.test(form), "<form id=\"survey-form\"> should have no action (it is a demo)");
+    assert.ok(
+        /demo\s+form/i.test(html) && /no\s+(data\s+is\s+)?(collected|sent)/i.test(html),
+        "form should say it is a demo and that no data is collected or sent"
+    );
+});

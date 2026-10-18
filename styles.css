@@ -72,3 +72,8 @@ button {
   color: #ffffff;
   min-width: 300px;
 }
+.demo-note {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin: 0 0 1rem;
+}
