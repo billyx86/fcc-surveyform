@@ -12,6 +12,10 @@
       <p id="description">This is a sample survey to gather feedback for completion of freeCodeCamp's first certification project, as well as to show my development journey for my CV. Data isn't collected here and will not be sent anywhere.</p>
     </header>
     <form id="survey-form">
+      <p class="demo-note">
+        This is a demo form — it has no <code>action</code> and no data is
+        collected or sent anywhere.
+      </p>
       <div class="form-group">
         <label id="name-label" for="name">Name:</label>
         <input 
@@ -20,6 +24,7 @@
           id="name"
           class="form-control"
           placeholder="Enter your name"
+          autocomplete="name"
           required
         />
       </div>
@@ -32,6 +37,7 @@
           id="email"
           class="form-control"
           placeholder="Enter your email"
+          autocomplete="email"
           required
         />
       </div>
@@ -46,6 +52,7 @@
           placeholder="Age"
           min="0"
           max="99"
+          autocomplete="off"
         />
       </div>
 
