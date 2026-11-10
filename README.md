@@ -36,3 +36,5 @@ npm test
 - `index.html` — form markup
 - `styles.css` — dark-themed styling
 - `tests/html.test.js` — HTML validation tests
+- `tests/line-endings.test.js` — line-ending hygiene: a normalizing
+  `.gitattributes` and no CR bytes in tracked text files (#9)
