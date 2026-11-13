@@ -77,3 +77,23 @@ button {
   opacity: 0.8;
   margin: 0 0 1rem;
 }
+
+/*
+ * Keyboard focus (#10). The border overrides above compete with (and can
+ * erase) the browser's default focus outline, so paint an explicit,
+ * high-contrast one. :focus-visible keeps it off for plain mouse clicks
+ * but on for Tab / screen-reader navigation.
+ */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 3px solid #1992D4;
+  outline-offset: 2px;
+}
+
+.submit-status {
+  font-size: 0.85rem;
+  color: #ffffff;
+  margin: 0 0 1rem;
+}
