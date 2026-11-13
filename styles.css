@@ -67,9 +67,9 @@ button {
   margin: 1em auto;
   height: 2.5em;
   font-size: 1.1rem;
-  background-color: #1739C1;
+  background-color: #BFDBFE;
   border-color: #0D0D0D;
-  color: #ffffff;
+  color: #1739C1;
   min-width: 300px;
 }
 .demo-note {
@@ -79,16 +79,18 @@ button {
 }
 
 /*
- * Keyboard focus (#10). The border overrides above compete with (and can
- * erase) the browser's default focus outline, so paint an explicit,
- * high-contrast one. :focus-visible keeps it off for plain mouse clicks
- * but on for Tab / screen-reader navigation.
+ * Keyboard focus (#10, contrast #14). The border overrides above compete
+ * with (and can erase) the browser's default focus outline, so paint an
+ * explicit one. :focus-visible keeps it off for plain mouse clicks but on
+ * for Tab / screen-reader navigation. The colour is chosen for WCAG 1.4.11
+ * non-text contrast: >= 3.0:1 against BOTH the grey form panel it is
+ * painted on and the dark page background (tests/css.test.js pins it).
  */
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 button:focus-visible {
-  outline: 3px solid #1992D4;
+  outline: 3px solid #A5F3FC;
   outline-offset: 2px;
 }
 
